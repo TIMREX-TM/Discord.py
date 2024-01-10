@@ -1,0 +1,34 @@
+import discord
+from discord.ext import commands
+from discord import command, File
+from discord.commands import Option, slash_command
+from easy_pil import Editor, load_image_async, load_image, Font
+import datetime
+import os
+from dotenv import load_dotenv
+import ezcord
+import discord.ui
+from discord.ui import View, Button, Select
+
+@bot.event
+async def on_member_join(member):
+
+        channel = member.guild.system_channel
+
+        background = Editor("# name eurer img datei").resize((800, 450))
+        profile_image = await load_image_async(str(member.avatar.url))
+
+        profile = Editor(profile_image).resize((150, 150)).circle_image()
+        poppins = Font.poppins(size=50, variant="bold")
+
+        poppins_small = Font.poppins(size=25, variant="light")
+
+        background.paste(profile, (325, 90))
+        background.ellipse((325, 90), 150, 150, outline="white", stroke_width=5)
+
+        background.text((400, 260), f"WELCOME TO {member.guild.name} SERVER", color="white", font=poppins, align="center")
+        background.text((400, 325), f"{member.name}#{member.discriminator}", color="white", font=poppins_small, align="center")
+
+        file = File(fp=background.image_bytes, filename="willkommen.jpg")
+        await channel.send(f"Hello {member.mention}! Welcome To **{member.guild.name} For More Information Go To <#1148726103150690395>**")
+        await channel.send(file=file)
