@@ -1,2 +1,2 @@
-# Discord.py
-Hier findet ihr Programmier Codes für die Sprache Py-cord und Python. Wie ihr herausfinden könnt welche Datei welche Sprache ist kuckt auf die Endung wenn die datei mit .py endet dann heißt es das es sich um die Sprache Python handelt und die ohne Endung Py-cord.
+# Discord
+Hier findet ihr Programmier Codes für die Sprache Py-cord.
